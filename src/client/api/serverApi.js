@@ -59,6 +59,12 @@ const list = {
 //   idAttribute: 'contributorPayee'
 // });
 
+const stateSummary = new Schema('stateSummary',{
+  // This is just to make normalizr happy.
+  // There's not multiple statse at this point, so there's not unique id, so I just chose something from the json result.
+  idAttribute: 'total_from_in_state'
+});
+
 const stateContribution = new Schema('stateContributions',{
   idAttribute: 'state'
 });
@@ -100,6 +106,7 @@ search.define({
 // });
 
 
+
 indivContribution.define({
   owner: campaign,
   listByType: valuesOf(transaction, {
@@ -130,7 +137,8 @@ export const Schemas = {
   BIZ_CONTRIBUTION: businessContribution,
   BIZ_CONTRIBUTION_ARRAY: arrayOf(businessContribution),
   PAC_CONTRIBUTION: pacContribution,
-  PAC_CONTRIBUTION_ARRAY: arrayOf(pacContribution)
+  PAC_CONTRIBUTION_ARRAY: arrayOf(pacContribution),
+  STATE_SUMMARY: stateSummary
 }
 
 export const CALL_API = Symbol('Call API');

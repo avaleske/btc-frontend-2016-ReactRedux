@@ -226,6 +226,28 @@ export function loadStateInfo(filerId, requiredFields = []) {
     return dispatch(fetchStateInfo(filerId))
   }
 }
+
+export const STATE_SUMMARY_REQUEST = 'STATE_SUMMARY_REQUEST'
+export const STATE_SUMMARY_SUCCESS = 'STATE_SUMMARY_SUCCESS'
+export const STATE_SUMMARY_FAILURE = 'STATE_SUMMARY_FAILURE'
+
+function fetchStateSummaryInfo() {
+  return {
+    [CALL_API]: {
+      types: [STATE_SUMMARY_REQUEST, STATE_SUMMARY_SUCCESS, STATE_SUMMARY_FAILURE],
+      endpoint: 'all_oregon_summary/_/',
+      schema: Schemas.STATE_SUMMARY
+    }
+  }
+}
+
+export function loadStateSummaryInfo(){
+  debugger
+  return (dispatch, getState) => {
+    return dispatch(fetchStateSummaryInfo());
+  }
+}
+
 export const RESET_ERROR_MESSAGE = 'RESET_ERROR_MESSAGE'
 
 // Resets the currently visible error message.

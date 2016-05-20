@@ -12,7 +12,8 @@ function entities(state = {
   transactions: {},
   contributions: {},
   donors: {},
-  searchData: {}
+  searchData: {},
+  stateSummary: {}
 }, action) {
   if (action.type === 'SEARCH_SUCCESS') {
     let result = action.response.result
@@ -23,7 +24,8 @@ function entities(state = {
       donors: {},
       searchData: {
         list: []
-      }
+      },
+      stateSummary: {}
     }
 
     for (var key in result) {
